@@ -1,0 +1,149 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.atom/
+.brackets.json
+*.code-workspace
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.key
+*.pem
+config.json
+secrets.json
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/
+jspm_packages/
+bower_components/
+vendor/
+.pnp
+.pnp.js
+
+# Build outputs
+build/
+dist/
+out/
+target/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Cache directories
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist/
+.serverless/
+.fusebox/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+*.temp
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Java specific
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+target/
+.gradle/
+build/
+
+# C/C++ specific
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# Documentation
+*.pdf
+*.doc
+*.docx
+docs/_build/
+
+# Misc
+.sass-cache/
+*.pid
+*.seed
+*.pid.lock
+.grunt
+.lock-wscript
+.nyc_output
+.coverage
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+.npm
+.yarn-integrity
+.pnpm-debug.log*
+
+# Platform specific
+.vercel
+.netlify/
+.firebase/
+.gcloud/
