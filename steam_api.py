@@ -37,6 +37,7 @@ def steam_game_unplayed(lower_bound_time: float, upper_bound_time: float):
                 'name': game['name'],
                 'appid': appid,
                 'library_hero': f"https://cdn.akamai.steamstatic.com/steam/apps/{appid}/header.jpg"
+                'playtime': game.get('playtime_forever', 0),
             }
             
             unplayed.append(game_info)

@@ -1,14 +1,24 @@
 from steam_api import steam_game_retrieve, steam_game_unplayed
 import streamlit as st 
 import random
-
+import numpy as np
 
 def main():
-    col1, col2 = st.columns([0.1, 6])
+    col1, col2 = st.columns([2, 6])
     
     with col1:
-        # st.subheader("Here are some stats...")
-        pass
+        st.subheader("Here are some stats...")
+        
+        st.markdown("**Total games in library:**")
+        st.markdown(len(steam_game_retrieve()))
+        
+        st.markdown("**Total unplayed games:**")
+        st.markdown(len(steam_game_unplayed(0, 0)))
+        
+        st.markdown("**Favourite game:**")
+        order = steam_game_unplayed(0, 0)
+        st.markdown(order)
+
     
     with col2:
         st.title("🎰 The Steam Roulette")
