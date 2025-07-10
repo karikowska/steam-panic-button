@@ -1,8 +1,10 @@
 import requests
 import os
+import pandas as pd
+from typing import Dict, List, Union
 
-def steam_game_retrieve():
-    """Retrieve list of user's Steam games along with a header image."""
+def steam_game_retrieve() -> List[List[str]]:
+    """Retrieve list of user's Steam games along with an associated header image for each."""
     apikey = os.environ["STEAM_API_KEY"]
     steamid = os.environ["STEAM_ID"]
 
@@ -18,8 +20,8 @@ def steam_game_retrieve():
     return game_list
 
 
-def steam_game_unplayed(lower_bound_time: float, upper_bound_time: float):
-    """Retrieve list of user's Steam games that are unplayed."""
+def games_by_time_played(lower_bound_time: float, upper_bound_time: float) -> List[dict]:
+    """Retrieve list of user's Steam games based on time played."""
     apikey = os.environ["STEAM_API_KEY"]
     steamid = os.environ["STEAM_ID"]
     
@@ -27,7 +29,7 @@ def steam_game_unplayed(lower_bound_time: float, upper_bound_time: float):
     
     games = req.json()['response']['games']
     
-    unplayed = []
+    played = []
     
     for game in games:
         if game.get('playtime_forever', 0) <= upper_bound_time and game.get('playtime_forever', 0) >= lower_bound_time:
@@ -40,7 +42,20 @@ def steam_game_unplayed(lower_bound_time: float, upper_bound_time: float):
                 'playtime': game['playtime_forever']
             }
             
-            unplayed.append(game_info)
+            played.append(game_info)
     
-    return unplayed
+    return played
+
+
+def create_game_df() -> pd.DataFrame:
+    """Create a df out of the user's Steam data, for usage in data analysis in the dashboard."""
+
+    req = requests.get(f"http://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key={apikey}&format=json&steamid={steamid}&include_appinfo=true&include_played_free_games=true")
+
+    games = data['response']['games']
+    
+    df = pd.DataFrame(games)
+    
+    return df
+
 

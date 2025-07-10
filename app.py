@@ -1,7 +1,9 @@
-from steam_api import steam_game_retrieve, steam_game_unplayed
+from steam_api import steam_game_retrieve, games_by_time_played
 import streamlit as st 
 import random
 import numpy as np
+from components import display_games, choose_and_display_game_name, display_game_image
+import math
 
 def main():
     
@@ -29,11 +31,15 @@ def main():
         
         st.markdown(f"**Total games in library:** {len(steam_game_retrieve())}")
         
-        st.markdown(f"**Total unplayed games:** {len(steam_game_unplayed(0, 0))}")
+        st.markdown(f"**Total unplayed games:** {len(games_by_time_played(0, 0))}")
         
-        order = steam_game_unplayed(0, 9999999999)
+        order = games_by_time_played(0, 9999999999)
         new_order = sorted(order, key=lambda x: x['playtime'], reverse=True)[0]['name']
+        time_played = sorted(order, key=lambda x: x['playtime'], reverse=True)[0]['playtime']
         st.markdown(f"**Favourite game:** {new_order}")
+        st.markdown(f"**You've played it for a total of {time_played/60} hours!**")
+        if time_played/60 > 50:
+            st.markdown(f"Wow, I'm impressed. So how does it feel to have spent more than **{math.floor(time_played/60/24)} days** of your life on this game?")
 
     
     with col2:
@@ -69,87 +75,15 @@ def main():
             st.markdown('</div>', unsafe_allow_html=True)
         st.markdown("Also make sure to check out these completely unplayed games in your library:")
         
-        try:
-            unplayed = steam_game_unplayed(0,0)
-            
-            col1, col2, col3 = st.columns([1, 1, 1])
-            
-            with col1:
-                game1 = random.choice(unplayed)
-                st.markdown(f"**{game1['name']}**")
-                
-            with col2:
-                game2 = random.choice(unplayed)
-                st.markdown(f"**{game2['name']}**")
-                
-            with col3:
-                game3 = random.choice(unplayed)
-                st.markdown(f"**{game3['name']}**")
-                
-                
-            col1, col2, col3 = st.columns([1, 1, 1])
-            
-            with col1:
-                if game1['library_hero']:
-                    st.image(game1['library_hero'], width=200)
-                else:
-                    st.markdown("No image available :( pretend there's a picture here!!!")
-                
-            with col2:
-                if game2['library_hero']:
-                    st.image(game2['library_hero'], width=200)
-                else:
-                    st.markdown("No image available :( pretend there's a picture here!!!")
-                
-            with col3:
-                if game3['library_hero']:
-                    st.image(game3['library_hero'], width=200)
-                else:
-                    st.markdown("No image available :( pretend there's a picture here!!!")
-        except:
-            st.markdown("No unplayed games found in your library. I guess you don't have a backlog, huh? Congrats! :D")
+        display_games(0, 0, "No unplayed games found in your library. I guess you don't have a backlog, huh? Congrats! :D")
             
         with st.container():
             st.markdown('<div class="info-container">', unsafe_allow_html=True)
             st.markdown('</div>', unsafe_allow_html=True)
+        
         st.markdown("And here are games that you've only played a little bit (< 2 hours), maybe give them another go?")
         
-        col1, col2, col3 = st.columns([1, 1, 1])
-        
-        unplayed = steam_game_unplayed(0.000001,120)
-        
-        with col1:
-            game4 = random.choice(unplayed)
-            st.markdown(f"**{game4['name']}**")
-            
-        with col2:
-            game5 = random.choice(unplayed)
-            st.markdown(f"**{game5['name']}**")
-            
-        with col3:
-            game6 = random.choice(unplayed)
-            st.markdown(f"**{game6['name']}**")
-            
-            
-        col1, col2, col3 = st.columns([1, 1, 1])
-        
-        with col1:
-            if game4['library_hero']:
-                st.image(game4['library_hero'], width=200)
-            else:
-                st.markdown("No image available :( pretend there's a picture here!!!")
-            
-        with col2:
-            if game5['library_hero']:
-                st.image(game5['library_hero'], width=200)
-            else:
-                st.markdown("No image available :( pretend there's a picture here!!!")
-            
-        with col3:
-            if game6['library_hero']:
-                st.image(game6['library_hero'], width=200)
-            else:
-                st.markdown("No image available :( pretend there's a picture here!!!")
+        display_games(0.000001, 120, "No games were found for this time range.")
         
         # Instructions
         st.markdown("---")
