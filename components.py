@@ -5,43 +5,48 @@ from typing import List, Dict, Union
 
 def choose_and_display_game_name(games: List[Dict[str, str]]) -> Dict[str, str]:
     """Choose a random game from the list and display its name."""
+    print("GAME TYPE:",type(games))
     game = random.choice(games)
     print(game)
-    st.markdown(f"**{game[0]}**")
+    st.markdown(f"**{game['name']}**")
     
     return game
 
 
 def display_game_image(game: Dict[str, str]) -> None:
     """Choose a random game from the list and display its name."""
-    if game[1]:
-        st.image(game[1], width=200)
+    print(game)
+    if game['library_hero']:
+        print("here")
+        st.image(game['library_hero'], width=200)
     else:
+        print("hewwo")
         st.markdown("No image available :(")
     
     return None
 
 
-def game_row(type: str, game1=None, game2=None, game3=None) -> Union[Dict[str, str], None]:
+def game_row(type: str, played=None, game1=None, game2=None, game3=None) -> Union[Dict[str, str], None]:
     """Create a row of three game names, or images depending on need."""
     
     if type=='game':
         col1, col2, col3 = st.columns([1, 1, 1])
 
         with col1:
-            game1 = choose_and_display_game_name(steam_game_retrieve())
+            game1 = choose_and_display_game_name(played)
             
         with col2:
-            game2 = choose_and_display_game_name(steam_game_retrieve())
+            game2 = choose_and_display_game_name(played)
             
         with col3:
-            game3 = choose_and_display_game_name(steam_game_retrieve())
+            game3 = choose_and_display_game_name(played)
             
         return game1, game2, game3
     
     elif type=='img':
-        
         col1, col2, col3 = st.columns([1, 1, 1])
+        
+        print("HEY GUYS")
 
         with col1:
             display_game_image(game1)
@@ -57,14 +62,12 @@ def game_row(type: str, game1=None, game2=None, game3=None) -> Union[Dict[str, s
 
 def display_games(time_lower_bound: float, time_upper_bound: float, custom_alert_message: str) -> None:
     """Display three random games in a row based on time played, along with their artwork underneath."""
-    # TODO #1 is broken - doesn't accurately retrieve games by time played
-    # TODO #2 also now retrieves games as lists not dict, which are insanely slow - needs fix
 
     played = games_by_time_played(time_lower_bound, time_upper_bound)
 
     if played:
-        game1, game2, game3 = game_row('game')
-        game_row('img', game1, game2, game3)
+        game1, game2, game3 = game_row('game', played)
+        game_row('img', None, game1, game2, game3)
         
     if not played:
         st.success(custom_alert_message)

@@ -15,7 +15,7 @@ def steam_game_retrieve() -> List[List[str]]:
     except requests.JSONDecodeError:
         data = None
 
-    game_list = [[i['name'], f"https://cdn.akamai.steamstatic.com/steam/apps/{i['appid']}/header.jpg"] for i in data['response']['games']]
+    game_list = [(i['name'], f"https://cdn.akamai.steamstatic.com/steam/apps/{i['appid']}/header.jpg") for i in data['response']['games']]
     
     return game_list
 
