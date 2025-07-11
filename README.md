@@ -36,6 +36,10 @@ I've built a mini-roulette to help me pick a video game when I'm too overwhelmed
 
 Now, you can finally enjoy freedom away from the depths of indecision :) because if you cannot pick a game due to an insurmountable backlog, this tool might just be the one to help you!
 
+# Current app view
+
+![](https://github.com/karikowska/steam-panic-button/blob/master/Screenshot%202025-07-12%20001655.png)
+
 # Current features & plans:
 - [x] Streamlit UI
 - [x] The actual random game-picking mechanism
