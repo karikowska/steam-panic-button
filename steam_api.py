@@ -1,3 +1,4 @@
+"""Module for serving Steam API requests and adjacent operations to do with obtained game data."""
 import requests
 import os
 import pandas as pd
@@ -10,9 +11,13 @@ def obtain_credentials() -> Dict[str, str]:
     - None
     
     Returns:
-    - Dict[str, str]: Dictionary containing 'apikey' and 'steamid'.
+    - Dict[str, str]: Dictionary containing the API key and user's Steam ID.
     """
-    return os.environ.get("STEAM_API_KEY"), os.environ.get("STEAM_ID")
+    try:
+        return os.environ.get("STEAM_API_KEY"), os.environ.get("STEAM_ID")
+    except KeyError:
+        raise KeyError("The variables STEAM_API_KEY and STEAM_ID have not been set.")
+
 
 def steam_game_retrieve() -> List[List[str]]:
     """Retrieve list of user's Steam games along with an associated header image for each.
@@ -49,7 +54,7 @@ def games_by_time_played(lower_bound_time: float, upper_bound_time: float) -> Li
     - played (List[dict]): List of dicts containing game name, appid, library hero image, and playtime.
     """
     
-    apikey, steamid = obtain_credentials().values()
+    apikey, steamid = obtain_credentials()
     
     req = requests.get(f"http://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key={apikey}&format=json&steamid={steamid}&include_appinfo=true&include_played_free_games=false")
     
@@ -90,5 +95,3 @@ def create_game_df() -> pd.DataFrame:
     df = pd.DataFrame(games)
     
     return df
-
-

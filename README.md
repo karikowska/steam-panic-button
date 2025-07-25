@@ -36,15 +36,18 @@ I've built a mini-roulette to help me pick a video game when I'm too overwhelmed
 
 Now, you can finally enjoy freedom away from the depths of indecision :) because if you cannot pick a game due to an insurmountable backlog, this tool might just be the one to help you!
 
+In the future I plan to deploy this app on Streamlit Cloud so users will be able to log in without having to run the app themselves.
+
 # Current app view
 
 ![](https://github.com/karikowska/steam-panic-button/blob/master/Screenshot%202025-07-12%20001655.png)
 
 # Current features & plans:
-- [x] Streamlit UI
-- [x] The actual random game-picking mechanism
-- [x] Special tabs underneath which add a few more game recommendations like 'here's a game you've never played, how about you give it a chance?'
+- [x] Create Streamlit UI
+- [x] Implement the actual random game-picking mechanism
+- [x] Add special tabs underneath which add a few more game recommendations like 'here's a game you've never played, how about you give it a chance?'
 - [ ] Smart game recommendations based on recent play - could be a side tab
-- [ ] Maybe a nice dashboard & stats page to do with your Steam account too! :) (currently this is in progress)
-- [ ] Login screen for inputting your steam API key
-- [ ] Actual Streamlit deployment (perhaps)
+- [ ] Add a dashboard & stats page to do with your Steam account (for the nerds)
+- [ ] Add CI/CD with Github Actions
+- [x] Add login screen for inputting your steam API key
+- [ ] Deploy on Streamlit Cloud/another provider

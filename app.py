@@ -5,18 +5,54 @@ import numpy as np
 from components import display_games, choose_and_display_game_name, display_game_image
 import math
 
-def main():
+def login_page():
+    """Display the login form"""
+    st.title("Steam Dashboard")
+    st.markdown("Please enter your Steam API credentials to continue.")
+    
+    with st.form("login_form"):
+        api_key = st.text_input("Steam API Key", type="password", 
+                               help="Get your API key from https://steamcommunity.com/dev/apikey")
+        steam_id = st.text_input("Steam ID", 
+                                help="Your 17-digit Steam ID, visible in your Steam settings!")
+        
+        submitted = st.form_submit_button("Login")
+        
+        if submitted:
+            if not api_key or not steam_id:
+                st.error("Please fill in both fields")
+                return
+            
+            # Show loading spinner while validating
+            with st.spinner("Validating credentials..."):
+                if True:
+                    # Store credentials in session state
+                    st.session_state.api_key = api_key
+                    st.session_state.steam_id = steam_id
+                    st.session_state.logged_in = True
+                    st.success("Login successful!")
+                    st.rerun()
+                else:
+                    st.error("Invalid API key or Steam ID. Please check your credentials.")
+    
+    st.write("> DISCLAIMER: This app does NOT store your API key anywhere but your browser session. I do not have access to it, and it is not stored in any database. By inputting your API key, you permit this app to access your Steam library data, including games and play time.")
+    st.write("> SOURCE CODE: You can check out my project's source code for yourself here: https://github.com/karikowska/steam-panic-button.")
+
+
+def dash():
+    """Main dashboard display function."""
+    
     st.set_page_config(layout="wide")
     
     st.markdown("""
-<style>
-    .info-container {
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 5px;
-        border-radius: 10px;
-        margin: 10px 0;
-    }
+        <style>
+        .info-container {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
     """, unsafe_allow_html=True)
     
     col1, col3, col2, col4 = st.columns([3, 0.75, 4, 3])
@@ -32,14 +68,14 @@ def main():
         
         st.markdown(f"**Total unplayed games:** {len(games_by_time_played(0, 0))}")
         
-        order = games_by_time_played(0, 9999999999)
+        order = games_by_time_played(0, np.inf)
         new_order = sorted(order, key=lambda x: x['playtime'], reverse=True)[0]['name']
         time_played = sorted(order, key=lambda x: x['playtime'], reverse=True)[0]['playtime']
         st.markdown(f"**Favourite game:** {new_order}")
-        st.markdown(f"**You've played it for a total of {time_played/60} hours!**")
-        if time_played/60 > 50:
-            st.markdown(f"Wow, I'm impressed. So how does it feel to have spent more than **{math.floor(time_played/60/24)} days** of your life on this game?")
-
+        if time_played/60 > 48:
+            st.markdown(f"**You've played it for a total of {time_played/60} hours!** Wow, I'm impressed. So how does it feel to have spent more than **{math.floor(time_played/60/24)} days** of your life on this game?")
+        else:
+            st.markdown(f"**You've played it for a total of {time_played/60} hours!**")
     
     with col2:
         st.title("🎰 The Steam Roulette")
@@ -84,5 +120,14 @@ def main():
         
         display_games(0.000001, 120, "No games were found for this time range.")
 
+def main():
+    if 'logged_in' not in st.session_state:
+        st.session_state.logged_in = False
+    
+    if st.session_state.logged_in:
+        dash()
+    else:
+        login_page()
+        
 if __name__ == "__main__":
     main()
