@@ -6,6 +6,7 @@ from components import display_games, choose_and_display_game_name, display_game
 import math
 
 def main():
+    st.set_page_config(layout="wide")
     
     st.markdown("""
 <style>
@@ -17,8 +18,6 @@ def main():
         margin: 10px 0;
     }
     """, unsafe_allow_html=True)
-    
-    st.set_page_config(layout="wide")
     
     col1, col3, col2, col4 = st.columns([3, 0.75, 4, 3])
     
@@ -73,7 +72,7 @@ def main():
         with st.container():
             st.markdown('<div class="info-container">', unsafe_allow_html=True)
             st.markdown('</div>', unsafe_allow_html=True)
-        st.markdown("Also make sure to check out these completely unplayed games in your library:")
+        st.markdown("> Also make sure to check out these completely unplayed games in your library:")
         
         display_games(0, 0, "No unplayed games found in your library. I guess you don't have a backlog, huh? Congrats! :D")
             
@@ -81,26 +80,9 @@ def main():
             st.markdown('<div class="info-container">', unsafe_allow_html=True)
             st.markdown('</div>', unsafe_allow_html=True)
         
-        st.markdown("And here are games that you've only played a little bit (< 2 hours), maybe give them another go?")
+        st.markdown("> And here are games that you've only played a little bit (< 2 hours), maybe give them another go?")
         
         display_games(0.000001, 120, "No games were found for this time range.")
-        
-        # Instructions
-        st.markdown("---")
-        st.markdown("""
-        ### 📝 Implementation Notes:
-
-        Building a mini-roulette to help me pick a video game when I'm too overwhelmed to pick one myself! (this is a natural progression of things when you own 100+ games I'm afraid)
-
-        Plan:
-        - ~Streamlit UI~
-        - ~An actual roulette if I can get it animated~
-        - ~a special 'here's a game you've never played, how about you give it a chance?'~
-        - Smart game recommendations based on recent play
-        - I want to differentiate this tool from just being the 'I'm feeling lucky' game picker from SteamDB by making it slightly more analytical and personalised
-        - Maybe a nice dashboard & stats page to do with your Steam account too! :)
-
-        """)
 
 if __name__ == "__main__":
     main()
