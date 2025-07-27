@@ -1,5 +1,7 @@
 # Steam(y) Dashboard - great for quick stats on your game library & helps with choosing a game to play!
 
+![](https://github.com/karikowska/steam-panic-button/blob/master/img/Screenshot%202025-07-12%20001655.png)
+
 >Ever felt too overwhelmed by your Steam backlog? 
 
 >Do you shudder at having to actually choose a video game to play when it's late night and you're super tired, and opt to just fall back to the same comfort zone of opening up <insert your comfort game here> a hundred times in a row instead?
@@ -37,10 +39,6 @@ I've built a mini-roulette to help me pick a video game when I'm too overwhelmed
 Now, you can finally enjoy freedom away from the depths of indecision :) because if you cannot pick a game due to an insurmountable backlog, this tool might just be the one to help you!
 
 In the future I plan to deploy this app on Streamlit Cloud so users will be able to log in without having to run the app themselves.
-
-# Current app view
-
-![](https://github.com/karikowska/steam-panic-button/blob/master/img/Screenshot%202025-07-12%20001655.png)
 
 # Current features & plans:
 - [x] Create Streamlit UI
