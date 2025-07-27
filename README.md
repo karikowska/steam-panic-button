@@ -1,4 +1,6 @@
-# Steam(y) Dashboard - great for quick stats on your game library & helps with choosing a game to play!
+# ✨ Karo's Steam(y) Dashboard ✨
+
+### Great for quick stats on your game library & helps with choosing a game to play!
 
 ![](https://github.com/karikowska/steam-panic-button/blob/master/img/Screenshot%202025-07-12%20001655.png)
 
@@ -14,6 +16,12 @@
 Then this project might help you! 
 
 I've built a mini-roulette to help me pick a video game when I'm too overwhelmed to pick one myself! (this is a natural progression of things when you own 100+ games I'm afraid)
+
+# Features
+
+- displays simple stats about your game library
+- serves you a game roulette that chooses a random game from your library
+- serves two widgets with video games that you 1. have never touched and 2. you've played for less than 2 hours, if these exist
 
 # How to run
 
