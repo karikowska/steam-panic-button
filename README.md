@@ -1,4 +1,4 @@
-# Panic Button - an app for fighting indecision and inertia with video games
+# Steam(y) Dashboard - great for quick stats on your game library & helps with choosing a game to play!
 
 >Ever felt too overwhelmed by your Steam backlog? 
 
@@ -40,7 +40,7 @@ In the future I plan to deploy this app on Streamlit Cloud so users will be able
 
 # Current app view
 
-![](https://github.com/karikowska/steam-panic-button/blob/master/Screenshot%202025-07-12%20001655.png)
+![](https://github.com/karikowska/steam-panic-button/blob/master/img/Screenshot%202025-07-12%20001655.png)
 
 # Current features & plans:
 - [x] Create Streamlit UI
