@@ -2,7 +2,7 @@
 
 ### Great for quick stats on your game library & helps with choosing a game to play!
 
-![](https://github.com/karikowska/steam-panic-button/blob/master/img/Screenshot%202025-07-12%20001655.png)
+![](https://github.com/karikowska/steamy-dashboard/blob/master/img/image.png)
 
 >Ever felt too overwhelmed by your Steam backlog? 
 
