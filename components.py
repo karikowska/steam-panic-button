@@ -1,3 +1,4 @@
+"""Module for displaying and choosing games in a Streamlit app."""
 import streamlit as st
 from steam_api import steam_game_retrieve, games_by_time_played, create_game_df
 import random

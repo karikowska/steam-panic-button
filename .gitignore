@@ -9,6 +9,7 @@ Thumbs.db
 *.swp
 *.swo
 *~
+karo_steam_games.csv
 
 # IDE and Editor files
 .vscode/

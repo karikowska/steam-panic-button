@@ -23,16 +23,20 @@ I've built a mini-roulette to help me pick a video game when I'm too overwhelmed
    export STEAM_API_KEY=""
    export STEAM_ID=""
    ````
-   
-3. Ensure Streamlit is installed (I'll create a requirements.txt later to help with that).
+
+3. Install packages from the requirements.txt with this command:
+
+   ````
+   pip install -r requirements.txt
+   ````
 
 4. In the root of the repo, run:
 
    ````
    streamlit run app.py
    ````
-   
-   to run the app!
+
+to run the app!
 
 Now, you can finally enjoy freedom away from the depths of indecision :) because if you cannot pick a game due to an insurmountable backlog, this tool might just be the one to help you!
 
@@ -40,7 +44,7 @@ In the future I plan to deploy this app on Streamlit Cloud so users will be able
 
 # Current app view
 
-![](https://github.com/karikowska/steam-panic-button/blob/master/Screenshot%202025-07-12%20001655.png)
+![](https://github.com/karikowska/steam-panic-button/blob/master/img/Screenshot%202025-07-12%20001655.png)
 
 # Current features & plans:
 - [x] Create Streamlit UI
