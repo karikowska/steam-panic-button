@@ -1,4 +1,8 @@
-# Panic Button - an app for fighting indecision and inertia with video games
+# ✨ Karo's Steam(y) Dashboard ✨
+
+### Great for quick stats on your game library & helps with choosing a game to play!
+
+![](https://github.com/karikowska/steam-panic-button/blob/master/img/Screenshot%202025-07-12%20001655.png)
 
 >Ever felt too overwhelmed by your Steam backlog? 
 
@@ -12,6 +16,12 @@
 Then this project might help you! 
 
 I've built a mini-roulette to help me pick a video game when I'm too overwhelmed to pick one myself! (this is a natural progression of things when you own 100+ games I'm afraid)
+
+# Features
+
+- displays simple stats about your game library
+- serves you a game roulette that chooses a random game from your library
+- serves two widgets with video games that you 1. have never touched and 2. you've played for less than 2 hours, if these exist
 
 # How to run
 
@@ -41,11 +51,6 @@ to run the app!
 Now, you can finally enjoy freedom away from the depths of indecision :) because if you cannot pick a game due to an insurmountable backlog, this tool might just be the one to help you!
 
 In the future I plan to deploy this app on Streamlit Cloud so users will be able to log in without having to run the app themselves.
-
-# Current app view
-
-![](https://github.com/karikowska/steam-panic-button/blob/master/img/Screenshot%202025-07-12%20001655.png)
-
 # Current features & plans:
 - [x] Create Streamlit UI
 - [x] Implement the actual random game-picking mechanism
