@@ -3,15 +3,14 @@
 ### Great for quick stats on your game library & helps with choosing a game to play!
 
 ![](https://github.com/karikowska/steamy-dashboard/blob/master/img/image.png)
+<h6>[this is an extremely zoomed out screenshot as the whole dashboard wouldn't fit on my screen, I promise it does not look this janky in reality]</h6>
 
->Ever felt too overwhelmed by your Steam backlog? 
+--------------------------------------------
+
+>Have you ever felt too overwhelmed by your Steam backlog? 
 
 >Do you shudder at having to actually choose a video game to play when it's late night and you're super tired, and opt to just fall back to the same comfort zone of opening up <insert your comfort game here> a hundred times in a row instead?
 
->Do you feel like you're stuck in an infinite loop of buying new games, thinking you'll play them, and then seeing them pile up over time with no end in sight?
-
->All of this because you have unbelievable inertia?
- 
 
 Then this project might help you! 
 
